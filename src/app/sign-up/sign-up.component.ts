@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       firstname: [''],
       lastname: [''],
       email: [''],
-      adress: this.formBuilder.group({
+      address: this.formBuilder.group({
         street: [''],
         city: [''],
         country: ['']

@@ -1,0 +1,37 @@
+:host {
+	display: block;
+}
+
+.check-email {
+	min-height: calc(100vh - 64px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	box-sizing: border-box;
+}
+
+.check-email-inner {
+	text-align: center;
+	padding: 28px 32px;
+	max-width: 560px;
+	width: 100%;
+	color: rgba(0,0,0,0.87);
+	transform: translateY(-6vh);
+}
+
+.check-email-inner h2 {
+	margin: 0 0 8px 0;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.check-email-inner p {
+	margin: 0;
+	color: rgba(0,0,0,0.6);
+}
+
+@media (max-width: 480px) {
+	.check-email-inner { padding: 20px; border-radius: 8px; transform: translateY(-3vh); }
+}
+
