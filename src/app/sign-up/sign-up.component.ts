@@ -16,22 +16,13 @@ interface DisplayMessage {
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
 
   title = 'Sign up';
   form!: FormGroup;
 
-  /**
-   * Boolean used in telling the UI
-   * that the form has been submitted
-   * and is awaiting a response
-   */
   submitted = false;
 
-  /**
-   * Notification message from received
-   * form request or router
-   */
   notification!: DisplayMessage;
 
   returnUrl!: string;
@@ -53,15 +44,21 @@ export class SignUpComponent implements OnInit {
       .subscribe((params: any) => {
         this.notification = params as DisplayMessage;
       });
-    // get return url from route parameters or default to '/'
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.form = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])],
+      confirmPassword: ['', Validators.required],
       firstname: [''],
       lastname: [''],
-      email: ['']
-    });
+      email: [''],
+      adress: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        country: ['']
+      })
+    }, { validators: this.passwordMatchValidator });
   }
 
   ngOnDestroy() {
@@ -70,19 +67,23 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    /**
-     * Innocent until proven guilty
-     */
+
     this.notification;
     this.submitted = true;
 
-    this.authService.signup(this.form.value)
+    if (this.form.hasError('mismatch')) {
+      this.submitted = false;
+      this.notification = { msgType: 'error', msgBody: 'Passwords do not match' };
+      return;
+    }
+
+    const signupData: any = Object.assign({}, this.form.value);
+    delete signupData.confirmPassword;
+
+    this.authService.signup(signupData)
       .subscribe(data => {
         console.log(data);
-        this.authService.login(this.form.value).subscribe(() => {
-          this.userService.getMyInfo().subscribe();
-        });
-        this.router.navigate([this.returnUrl]);
+        this.router.navigate(['/check-email']);
       },
         error => {
           this.submitted = false;
@@ -91,6 +92,16 @@ export class SignUpComponent implements OnInit {
         });
 
   }
+
+    private passwordMatchValidator = (group: FormGroup) => {
+      const pw = group.get('password')?.value;
+      const cpw = group.get('confirmPassword')?.value;
+      return pw === cpw ? null : { mismatch: true };
+    }
+
+    passwordMismatch(): boolean {
+      return this.form && this.form.hasError('mismatch');
+    }
 
 
 }
