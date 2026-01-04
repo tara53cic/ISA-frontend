@@ -86,8 +86,16 @@ export class SignUpComponent implements OnInit, OnDestroy {
       },
         error => {
           this.submitted = false;
-          console.log('Sign up error');
-          this.notification = { msgType: 'error', msgBody: error['error'].message };
+          const errMsg = error?.error?.message || 'Registration failed';
+          console.log('Sign up error', error);
+          if (error?.status === 409 || /username/i.test(errMsg)) {
+            const ctrl = this.form.get('username');
+            ctrl?.setErrors({ exists: true });
+            ctrl?.markAsTouched();
+            this.notification = { msgType: 'error', msgBody: 'Username already exists. Please choose another.' };
+          } else {
+            this.notification = { msgType: 'error', msgBody: errMsg };
+          }
         });
 
   }

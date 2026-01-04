@@ -14,7 +14,7 @@
 
     <div class="right" fxLayout="row" fxLayoutAlign="end center">
         <button *ngIf="!hasSignedIn()" mat-raised-button routerLink="/login">
-            Log in
+            Log In
         </button>
 
         <button *ngIf="hasSignedIn()" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">

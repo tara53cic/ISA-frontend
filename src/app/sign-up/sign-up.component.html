@@ -11,6 +11,10 @@
                             <mat-form-field appearance="outline">
                                 <label>Username</label>
                                 <input formControlName="username" matInput required>
+                                <mat-error *ngIf="form.get('username')?.hasError('required')">Username is required</mat-error>
+                                <mat-error *ngIf="form.get('username')?.hasError('minlength')">Username must be at least 3 characters</mat-error>
+                                <mat-error *ngIf="form.get('username')?.hasError('maxlength')">Username cannot exceed 64 characters</mat-error>
+                                <mat-error *ngIf="form.get('username')?.hasError('exists')">Username already exists</mat-error>
                             </mat-form-field>
                             <div formGroupName="address" class="address-row">
                                 <mat-form-field appearance="outline">
@@ -44,6 +48,9 @@
                             <mat-form-field appearance="outline">
                                 <label>Password</label>
                                 <input formControlName="password" matInput required type="password">
+                                <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+                                <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 3 characters</mat-error>
+                                <mat-error *ngIf="form.get('password')?.hasError('maxlength')">Password cannot exceed 32 characters</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="outline">
                                 <label>Confirm Password</label>
