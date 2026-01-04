@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CheckEmailComponent } from './sign-up/check-email.component';
+import { VideoComponent } from './video-page/video.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'check-email',
     component: CheckEmailComponent,
+  },
+  {
+    path: 'video/:id',
+    component: VideoComponent,
   },
 ];
 

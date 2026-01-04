@@ -1,0 +1,132 @@
+.page {
+  padding: 12px 0;
+}
+
+.content {
+  margin: 0 24px;
+}
+
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-wrap {
+  width: 80vw;
+  max-width: 1100px;
+}
+
+.player-element {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 6px;
+}
+
+.meta {
+  width: 80vw;
+  max-width: 1100px;
+  margin-top: 12px;
+}
+
+.meta .title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.meta .description {
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.meta .tags {
+  margin-bottom: 6px;
+  color: #666;
+}
+
+.meta .created {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.meta .tags {
+  margin-bottom: 6px;
+}
+
+.meta .tags span {
+  display: inline-block;
+  background: rgb(93, 117, 196);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-right: 6px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  max-width: 1100px;
+}
+
+.reactions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.reaction-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: #777;
+}
+
+.reaction-icon.rotated {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.reaction-icon.active {
+  color: rgb(93, 117, 196);
+}
+
+.section-divider {
+  border: none;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 18px 0;
+}
+
+.comment-container {
+  width: 80vw;
+  max-width: 1100px;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.post-btn {
+  background: rgb(93, 117, 196);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}

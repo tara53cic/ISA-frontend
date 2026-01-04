@@ -1,0 +1,34 @@
+<div class="page">
+  <div class="content">
+    <div class="player-container" *ngIf="video">
+      <div class="player-wrap">
+        <video [src]="video.video_url" controls class="player-element"></video>
+      </div>
+      <div class="meta">
+        <div class="title">{{ video.title }}</div>
+        <div class="description">{{ video.description }}</div>
+
+        <div class="meta-row">
+          <div class="tags"><span *ngFor="let t of (video.tags || []); let i = index">{{t}}</span></div>
+
+          <div class="reactions">
+            <mat-icon class="reaction-icon" [class.active]="liked" (click)="toggleLike()">thumb_up</mat-icon>
+            <mat-icon class="reaction-icon rotated" [class.active]="disliked" (click)="toggleDislike()">thumb_up</mat-icon>
+          </div>
+        </div>
+
+        <div class="created">{{ video.created_at | date:'medium' }}</div>
+
+        <hr class="section-divider" />
+
+        <div class="comment-container">
+          <textarea class="comment-input" placeholder="Leave a comment!"></textarea>
+          <div class="comment-actions">
+            <button class="post-btn">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!video">Video not found.</div>
+  </div>
+</div>

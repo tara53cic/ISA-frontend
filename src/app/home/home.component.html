@@ -1,4 +1,31 @@
-<div>
- 
+<div class="page">
+	<div class="content">
+		<h3 class="section-title">Reccomended:</h3>
 
+		<div class="video-grid">
+			<ng-container *ngFor="let video of recommendedVideos">
+				<a [routerLink]="['/video', video.id]" class="video-card video-link">
+					<div class="thumb">
+						<img [src]="video.thumbnail_url" [alt]="video.title" />
+					</div>
+					<div class="video-title">{{ video.title }}</div>
+				</a>
+			</ng-container>
+		</div>
+
+		<hr class="section-divider" />
+
+		<h3 class="section-title">Recent:</h3>
+
+		<div class="video-grid">
+			<ng-container *ngFor="let video of recentVideos">
+				<a [routerLink]="['/video', video.id]" class="video-card video-link">
+					<div class="thumb">
+						<img [src]="video.thumbnail_url" [alt]="video.title" />
+					</div>
+					<div class="video-title">{{ video.title }}</div>
+				</a>
+			</ng-container>
+		</div>
+	</div>
 </div>
