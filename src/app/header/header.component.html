@@ -1,22 +1,28 @@
 <mat-toolbar class="app-navbar" color="primary">
-    <div class="right">
-        <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end center">
-            <button *ngIf="!hasSignedIn()" mat-raised-button routerLink="/signup">
-                <span>Sign up</span>
+    <div class="left" fxLayout="row" fxLayoutAlign="start center">
+        <img src="assets/logo2.png" alt="Logo" class="logo" />
+    </div>
+
+    <div class="search">
+        <mat-form-field appearance="outline" class="search-field">
+            <input matInput placeholder="Search...">
+            <button mat-icon-button matSuffix aria-label="Search">
+                <mat-icon>search</mat-icon>
             </button>
-            <button *ngIf="!hasSignedIn()" mat-raised-button routerLink="/login">
-                <span>Login</span>
-            </button>
-            <button *ngIf="hasSignedIn()" [matMenuTriggerFor]="userMenu" class="greeting-button" 
-            mat-button>
-                <span>Hello, {{userName()}}</span>
-            </button>
-            <button *ngIf="hasSignedIn()" [matMenuTriggerFor]="userMenu" class="greeting-hamburger" 
-            mat-icon-button>
-            </button>
-            <mat-menu #userMenu ="matMenu">
-                <mat-button (click)="logout()">sign out</mat-button>
-            </mat-menu>
-        </div>
+        </mat-form-field>
+    </div>
+
+    <div class="right" fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="!hasSignedIn()" mat-raised-button routerLink="/login">
+            Log In
+        </button>
+
+        <button *ngIf="hasSignedIn()" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
+            <mat-icon class="avatar-icon">account_circle</mat-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item (click)="logout()">Log Out</button>
+        </mat-menu>
     </div>
 </mat-toolbar>

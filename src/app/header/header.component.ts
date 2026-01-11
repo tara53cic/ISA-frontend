@@ -20,9 +20,11 @@ export class HeaderComponent implements OnInit {
 
   userName() {
     const user = this.userService.currentUser;
-    return user.firstName + ' ' + user.lastName;
+    if (!user) { return ''; }
+    return (user.firstName || '') + ' ' + (user.lastName || '');
   }
   logout() {
     this.authService.logout();
   }
+
 }

@@ -15,7 +15,7 @@ interface DisplayMessage {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   title = 'Login';
   form!: FormGroup;
 
@@ -80,7 +80,14 @@ export class LoginComponent implements OnInit {
         error => {
           console.log(error);
           this.submitted = false;
-          this.notification = {msgType: 'error', msgBody: 'Incorrect username or password.'};
+          if (error && error.status === 401) {
+            this.notification = {msgType: 'error', msgBody: 'Incorrect username or password.'};
+          } else if (error && error.status === 429) {
+            this.notification = {msgType: 'error', msgBody: 'Too many attempts. Try again in a minute'};
+          } else {
+            const msg = error && error.error && error.error.message ? error.error.message : 'Login failed';
+            this.notification = {msgType: 'error', msgBody: msg};
+          }
         });
   }
 

@@ -1,47 +1,66 @@
+:host {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 8vh;
+}
+
 .content {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    width: 50%;
-    padding: 10px;
-  }
-  
-  mat-card {
-    max-width: 350px;
-    text-align: center;
-    animation: fadein 1s;
-    -o-animation: fadein 1s; /* Opera */
-    -moz-animation: fadein 1s; /* Firefox */
-    -webkit-animation: fadein 1s; /* Safari and Chrome */
-  
-  }
-  
-  mat-input-container {
-    display: block;
-  }
-  
-  mat-spinner {
-    width: 25px;
-    height: 25px;
-    margin: 20px auto 0 auto;
-  }
-  
-  button {
-    display: block;
-    width: 100%;
-  }
-  
-  .error {
-    color: #D50000;
-  }
-  
-  .success {
-    color: #8BC34A;
-  }
-  
-  a {
-    text-decoration: none;
-    cursor: auto;
-    color: #FFFFFF;
-  }
+  width: 360px;
+  padding: 16px;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: fadein 350ms ease-in;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+mat-form-field .mat-form-field-infix,
+input[matInput] {
+  width: 100%;
+}
+
+mat-spinner {
+  width: 28px;
+  height: 28px;
+  margin: 20px auto 0 auto;
+}
+
+button {
+  display: block;
+  width: 100%;
+}
+
+.error { color: #D50000; }
+.success { color: #8BC34A; }
+
+a { text-decoration: none; cursor: auto; color: #FFFFFF; }
+
+.field-label {
+  display: block;
+  text-align: left;
+  margin: 6px 0 6px 0;
+  font-weight: 600;
+  color: rgba(0,0,0,0.85);
+}
+
+.signup-link {
+  color: rgb(93, 117, 196);
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 600;
+}
+.signup-link:hover { text-decoration: underline; }
   
