@@ -6,7 +6,7 @@
 			<ng-container *ngFor="let video of recommendedVideos">
 				<a [routerLink]="['/video', video.id]" class="video-card video-link">
 					<div class="thumb">
-						<img [src]="video.thumbnail_url" [alt]="video.title" />
+						<img [src]="'http://localhost:8082/api/videos/' + video.id + '/thumbnail'" [alt]="video.title" />
 					</div>
 					<div class="video-title">{{ video.title }}</div>
 				</a>
