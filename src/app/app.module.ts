@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApiService} from './service/api.service';
 import {AuthService} from './service/auth.service';
 import {ConfigService} from './service/config.service';
-import {MockVideoService} from './service/mock.video.service';
+import {VideoService} from './service/video.service';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
@@ -48,7 +48,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AuthService,
     ApiService,
     ConfigService,
-    MockVideoService,
+    VideoService,
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

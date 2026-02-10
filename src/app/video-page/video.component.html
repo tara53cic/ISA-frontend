@@ -2,7 +2,9 @@
   <div class="content">
     <div class="player-container" *ngIf="video">
       <div class="player-wrap">
-        <video [src]="video.video_url" controls class="player-element"></video>
+        <video controls autoplay class="main-video-display" style="width: 100%;">
+      <source [src]="'http://localhost:8082/api/videos/' + video?.id + '/watch'" type="video/mp4">
+    </video>
       </div>
       <div class="meta">
         <div class="title">{{ video.title }}</div>
