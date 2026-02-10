@@ -1,0 +1,8 @@
+.upload-dialog { max-width: 100%; padding-top: 12px; padding-bottom: 12px; min-height: 420px; }
+.full { width: 100%; }
+.file-row { display: flex; gap: 16px; margin-top: 12px; }
+.thumb-col { width: 240px; }
+.video-col { flex: 1; display:flex; flex-direction:column; }
+.thumb-preview { margin-top:8px; border-radius:4px; overflow:hidden; height:120px; width:100%; display:flex; align-items:center; justify-content:center; background:#f6f6f6; }
+.thumb-preview img { max-height:100%; max-width:100%; object-fit:contain; }
+.file-label { font-weight:600; margin-bottom:6px; display:block; }

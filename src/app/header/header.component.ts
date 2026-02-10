@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service';
-import {UserService} from '../service/user.service';
+import { UserService } from '../service/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { VideoUploadComponent } from '../video-upload/video-upload.component';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,7 @@ import {UserService} from '../service/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private userService: UserService, private authService: AuthService) { }
+  constructor(private userService: UserService, private authService: AuthService, private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -25,6 +27,10 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     this.authService.logout();
+  }
+
+  openCreateVideo() {
+    this.dialog.open(VideoUploadComponent, { width: '640px' });
   }
 
 }

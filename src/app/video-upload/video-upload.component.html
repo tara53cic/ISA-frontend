@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Create video</h2>
+
+<mat-dialog-content [formGroup]="form" class="upload-dialog">
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description" rows="3"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Tags (comma separated)</mat-label>
+    <input matInput formControlName="tags" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Location</mat-label>
+    <input matInput formControlName="location" />
+  </mat-form-field>
+
+  <div class="file-row">
+    <div class="thumb-col">
+      <label class="file-label">Thumbnail</label>
+      <input type="file" accept="image/*" (change)="onThumbnailChange($event)" />
+      <div class="thumb-preview" *ngIf="thumbnailPreview">
+        <img [src]="thumbnailPreview" alt="thumb" />
+      </div>
+    </div>
+
+    <div class="video-col">
+      <label class="file-label">Video file</label>
+      <input type="file" accept="video/*" (change)="onVideoChange($event)" />
+    </div>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()" [disabled]="uploading">Cancel</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="uploading">{{ uploading ? 'Uploading...' : 'Upload' }}</button>
+</mat-dialog-actions>

@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VideoComponent } from './video-page/video.component';
+import { VideoUploadComponent } from './video-upload/video-upload.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -29,6 +30,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     LoginComponent,
     SignUpComponent,
     VideoComponent,
+    VideoUploadComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,10 @@
             Log In
         </button>
 
+        <button *ngIf="hasSignedIn()" mat-raised-button color="accent" (click)="openCreateVideo()" style="margin-right:8px;">
+            Create video!
+        </button>
+
         <button *ngIf="hasSignedIn()" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
             <mat-icon class="avatar-icon">account_circle</mat-icon>
         </button>

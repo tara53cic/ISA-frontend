@@ -93,6 +93,16 @@
   border-radius: 50%;
 }
 
+:host .right {
+  display: flex;
+  align-items: center;
+}
+
+:host .right button[mat-raised-button] {
+  margin-right: 8px;
+  transform: translateY(-4px);
+}
+
 
 :host ::ng-deep .search-field .mat-form-field {
   display: flex;

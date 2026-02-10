@@ -7,8 +7,8 @@
     </video>
       </div>
       <div class="meta">
-        <div class="title">{{ video.title }}</div>
-        <div class="description">{{ video.description }}</div>
+        <div class="title">{{ video?.title }}</div>
+        <div class="description">{{ video?.description }}</div>
 
         <div class="meta-row">
           <div class="tags"><span *ngFor="let t of (video.tags || []); let i = index">{{t}}</span></div>
@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <div class="created">{{ video.created_at | date:'medium' }}</div>
+        <div class="created">{{ video?.created_at | date:'medium' }}</div>
 
         <hr class="section-divider" />
 

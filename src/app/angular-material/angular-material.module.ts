@@ -7,6 +7,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {NgModule} from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
@@ -52,6 +53,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CdkTreeModule,
     DragDropModule,
     MatAutocompleteModule,
+    MatFormFieldModule,
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,
@@ -96,6 +98,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CdkTreeModule,
     DragDropModule,
     MatAutocompleteModule,
+    MatFormFieldModule,
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,

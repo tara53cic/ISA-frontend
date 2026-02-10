@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Video } from '../models/video.model';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Video } from '../models/video.model';
 })
 export class VideoService {
   private baseUrl = 'http://localhost:8082/api/videos';
+  public videosUpdated: Subject<void> = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +22,12 @@ export class VideoService {
   getVideoById(id: number | string): Observable<Video> {
     return this.http.get<any>(`${this.baseUrl}/${id}`).pipe(
       map(r => this.toVideo(r))
+    );
+  }
+
+  uploadVideo(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/post`, formData).pipe(
+      tap(() => this.videosUpdated.next())
     );
   }
 
