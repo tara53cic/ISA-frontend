@@ -6,3 +6,7 @@
 .thumb-preview { margin-top:8px; border-radius:4px; overflow:hidden; height:120px; width:100%; display:flex; align-items:center; justify-content:center; background:#f6f6f6; }
 .thumb-preview img { max-height:100%; max-width:100%; object-fit:contain; }
 .file-label { font-weight:600; margin-bottom:6px; display:block; }
+
+.schedule-row { display:flex; gap:12px; align-items:center; margin-top:12px; }
+.scheduled-input { width: 320px; }
+.scheduled-input input[type="datetime-local"] { width: 100%; }

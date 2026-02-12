@@ -1,31 +1,45 @@
 <div class="page">
-	<div class="content">
-		<h3 class="section-title">Reccomended:</h3>
+  <div class="content">
+    <h3 class="section-title">Reccomended:</h3>
 
-		<div class="video-grid">
-			<ng-container *ngFor="let video of recommendedVideos">
-				<a [routerLink]="['/video', video.id]" class="video-card video-link">
-					<div class="thumb">
-						<img [src]="'http://localhost:8082/api/videos/' + video.id + '/thumbnail'" [alt]="video.title" />
-					</div>
-					<div class="video-title">{{ video.title }}</div>
-				</a>
-			</ng-container>
-		</div>
+    <div class="video-grid">
+      <ng-container *ngFor="let video of recommendedVideos">
+        <div class="video-card-container">
+          <a [routerLink]="['/video', video.id]" class="video-card video-link">
+            <div class="thumb">
+              <img [src]="video.thumbnail_url" [alt]="video.title" />
+            </div>
+            <div class="video-title">{{ video.title }}</div>
+          </a>
 
-		<hr class="section-divider" />
+          <div class="badge-row">
+            <span *ngIf="isLive(video)" class="live-badge">LIVE</span>
+            <span *ngIf="isFuture(video.scheduled_at)" class="scheduled-badge">Scheduled at {{ video.scheduled_at | date:'short' }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
 
-		<h3 class="section-title">Recent:</h3>
+    <hr class="section-divider" />
 
-		<div class="video-grid">
-			<ng-container *ngFor="let video of recentVideos">
-				<a [routerLink]="['/video', video.id]" class="video-card video-link">
-					<div class="thumb">
-						<img [src]="video.thumbnail_url" [alt]="video.title" />
-					</div>
-					<div class="video-title">{{ video.title }}</div>
-				</a>
-			</ng-container>
-		</div>
-	</div>
+    <h3 class="section-title">Recent:</h3>
+
+    <div class="video-grid">
+      <ng-container *ngFor="let video of recentVideos">
+        <div class="video-card-container">
+          <a [routerLink]="['/video', video.id]" class="video-card video-link">
+            <div class="thumb">
+              <img [src]="video.thumbnail_url" [alt]="video.title" />
+            </div>
+            <div class="video-title">{{ video.title }}</div>
+          </a>
+
+          <div class="badge-row">
+            <span *ngIf="isLive(video)" class="live-badge">LIVE</span>
+            <span *ngIf="isFuture(video.scheduled_at)" class="scheduled-badge">Scheduled at {{ video.scheduled_at | date:'short' }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </div>

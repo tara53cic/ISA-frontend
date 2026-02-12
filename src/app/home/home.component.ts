@@ -36,4 +36,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.sub) { this.sub.unsubscribe(); }
   }
 
+  isFuture(scheduledAt?: string): boolean {
+    if (!scheduledAt) return false;
+    return new Date(scheduledAt) > new Date();
+  }
+
+  isLive(video: Video | any): boolean {
+    const scheduled = (video && (video.scheduled_at || video.scheduledAt));
+    const duration = (video && (video.duration || video.duration === 0 ? video.duration : undefined));
+    if (!scheduled || !duration) return false;
+    const startTime = new Date(scheduled).getTime();
+    const endTime = startTime + (Number(duration) * 1000);
+    const now = Date.now();
+    return now >= startTime && now <= endTime;
+  }
+
 }

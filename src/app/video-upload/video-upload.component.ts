@@ -26,7 +26,9 @@ export class VideoUploadComponent {
       title: [''],
       description: [''],
       tags: [''],
-      location: ['']
+      location: [''],
+      scheduled: [false],
+      scheduledAt: ['']
     });
   }
 
@@ -49,12 +51,25 @@ export class VideoUploadComponent {
     if (this.uploading) { return; }
     const rawTags = (this.form.value.tags || '').toString();
     const tags = rawTags.split(',').map((t: string) => t.trim()).filter((t: string) => !!t);
-    const payload = {
+    const payload: any = {
       title: this.form.value.title,
       description: this.form.value.description,
       tags,
       location: this.form.value.location
     };
+
+
+    if (this.form.value.scheduled) {
+      const raw = this.form.value.scheduledAt;
+      if (raw) {
+
+        let scheduledAt = String(raw);
+        if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(scheduledAt)) {
+          scheduledAt = scheduledAt + ':00';
+        }
+        payload.scheduledAt = scheduledAt;
+      }
+    }
 
     const fd = new FormData();
     const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });

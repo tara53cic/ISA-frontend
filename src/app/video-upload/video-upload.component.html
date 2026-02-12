@@ -21,6 +21,14 @@
     <input matInput formControlName="location" />
   </mat-form-field>
 
+  <div class="schedule-row">
+    <mat-slide-toggle formControlName="scheduled">Schedule upload</mat-slide-toggle>
+    <mat-form-field appearance="outline" class="scheduled-input" *ngIf="form.value.scheduled">
+      <mat-label>Scheduled date & time</mat-label>
+      <input matInput type="datetime-local" formControlName="scheduledAt" />
+    </mat-form-field>
+  </div>
+
   <div class="file-row">
     <div class="thumb-col">
       <label class="file-label">Thumbnail</label>

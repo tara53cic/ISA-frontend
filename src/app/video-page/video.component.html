@@ -2,9 +2,18 @@
   <div class="content">
     <div class="player-container" *ngIf="video">
       <div class="player-wrap">
-        <video controls autoplay class="main-video-display" style="width: 100%;">
-      <source [src]="'http://localhost:8082/api/videos/' + video?.id + '/watch'" type="video/mp4">
-    </video>
+        <ng-container *ngIf="isFuture(video.scheduled_at); else playBlock">
+          <div class="player-element scheduled-placeholder">
+            <div class="scheduled-msg">This video is a scheduled video, it will start in...</div>
+            <div class="countdown">{{ countdownDisplay }}</div>
+          </div>
+        </ng-container>
+        <ng-template #playBlock>
+          <div *ngIf="isLiveFlag" class="live-overlay">LIVE</div>
+          <video #player controls autoplay class="main-video-display" style="width: 100%;">
+            <source [src]="'http://localhost:8082/api/videos/' + video?.id + '/watch'" type="video/mp4">
+          </video>
+        </ng-template>
       </div>
       <div class="meta">
         <div class="title">{{ video?.title }}</div>

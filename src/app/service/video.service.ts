@@ -31,6 +31,10 @@ export class VideoService {
     );
   }
 
+  getStreamInfo(id: number | string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}/stream-info`);
+  }
+
   private toVideo(raw: any): Video {
     const thumb = raw?.thumbnail ? String(raw.thumbnail).replace(/\\/g, '/') : '';
     const vid = raw?.videoPath ? String(raw.videoPath).replace(/\\/g, '/') : '';
@@ -48,6 +52,17 @@ export class VideoService {
     } else if (raw?.createdAt) {
       created_at = String(raw.createdAt);
     }
+    let scheduled_at = '';
+    if (Array.isArray(raw?.scheduledAt)) {
+      try {
+        const p = raw.scheduledAt;
+        scheduled_at = new Date(p[0], (p[1] || 1) - 1, p[2] || 1, p[3] || 0, p[4] || 0, p[5] || 0).toISOString();
+      } catch {
+        scheduled_at = '';
+      }
+    } else if (raw?.scheduledAt) {
+      scheduled_at = String(raw.scheduledAt);
+    }
 
     return {
       id: raw?.id,
@@ -57,6 +72,8 @@ export class VideoService {
       thumbnail_url,
       video_url,
       created_at,
+      scheduled_at,
+      duration: raw?.duration,
       location: typeof raw?.location === 'object' ? raw.location : undefined
     } as Video;
   }

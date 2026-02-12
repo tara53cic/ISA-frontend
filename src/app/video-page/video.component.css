@@ -15,6 +15,7 @@
 .player-wrap {
   width: 80vw;
   max-width: 1100px;
+  position: relative;
 }
 
 .player-element {
@@ -22,6 +23,32 @@
   aspect-ratio: 16 / 9;
   background: #000;
   border-radius: 6px;
+}
+
+.scheduled-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #111;
+  border-radius: 6px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.scheduled-msg { font-size: 1.1rem; margin-bottom: 8px; }
+.countdown { font-weight: 700; font-size: 1.25rem; }
+
+.live-overlay {
+  position: absolute;
+  z-index: 10;
+  margin: 12px;
+  background: rgba(211,47,47,0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
 }
 
 .meta {
