@@ -19,8 +19,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   private sub: Subscription | null = null;
 
   loadVideos() {
+
+    this.videoService.getPopularVideos().subscribe(popular => {
+      this.recommendedVideos = popular || [];
+    }, () => {
+      this.recommendedVideos = [];
+    });
+
     this.videoService.getVideos().subscribe(videos => {
-      this.recommendedVideos = videos.slice(0, 5);
       this.recentVideos = [...videos].sort((a, b) => {
         return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
       });
@@ -49,6 +55,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     const endTime = startTime + (Number(duration) * 1000);
     const now = Date.now();
     return now >= startTime && now <= endTime;
+  }
+
+  onVideoClick(video: Video | any) {
+    const id = video?.id;
+    if (!id) return;
+    this.videoService.recordView(id).subscribe({
+      next: () => {},
+      error: () => {}
+    });
   }
 
 }

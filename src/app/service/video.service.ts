@@ -19,6 +19,12 @@ export class VideoService {
     );
   }
 
+  getPopularVideos(): Observable<Video[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/popular`).pipe(
+      map(arr => Array.isArray(arr) ? arr.map(r => this.toVideo(r)) : [])
+    );
+  }
+
   getVideoById(id: number | string): Observable<Video> {
     return this.http.get<any>(`${this.baseUrl}/${id}`).pipe(
       map(r => this.toVideo(r))
@@ -29,6 +35,10 @@ export class VideoService {
     return this.http.post<any>(`${this.baseUrl}/post`, formData).pipe(
       tap(() => this.videosUpdated.next())
     );
+  }
+
+  recordView(id: number | string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/${id}/view`, {});
   }
 
   getStreamInfo(id: number | string): Observable<any> {
@@ -71,6 +81,7 @@ export class VideoService {
       tags: raw?.tags,
       thumbnail_url,
       video_url,
+      views: raw?.views,
       created_at,
       scheduled_at,
       duration: raw?.duration,

@@ -1,11 +1,11 @@
 <div class="page">
   <div class="content">
-    <h3 class="section-title">Reccomended:</h3>
+    <h3 class="section-title">Popular this week!</h3>
 
     <div class="video-grid">
       <ng-container *ngFor="let video of recommendedVideos">
         <div class="video-card-container">
-          <a [routerLink]="['/video', video.id]" class="video-card video-link">
+          <a [routerLink]="['/video', video.id]" class="video-card video-link" (click)="onVideoClick(video)">
             <div class="thumb">
               <img [src]="video.thumbnail_url" [alt]="video.title" />
             </div>
@@ -27,7 +27,7 @@
     <div class="video-grid">
       <ng-container *ngFor="let video of recentVideos">
         <div class="video-card-container">
-          <a [routerLink]="['/video', video.id]" class="video-card video-link">
+          <a [routerLink]="['/video', video.id]" class="video-card video-link" (click)="onVideoClick(video)">
             <div class="thumb">
               <img [src]="video.thumbnail_url" [alt]="video.title" />
             </div>

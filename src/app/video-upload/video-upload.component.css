@@ -10,3 +10,5 @@
 .schedule-row { display:flex; gap:12px; align-items:center; margin-top:12px; }
 .scheduled-input { width: 320px; }
 .scheduled-input input[type="datetime-local"] { width: 100%; }
+
+.views { color: #666; margin-top: 8px; margin-bottom: 8px; font-size: 0.95rem; }

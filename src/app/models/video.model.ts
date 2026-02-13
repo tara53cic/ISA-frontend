@@ -13,4 +13,5 @@ export interface Video {
     longitude: number;
     address?: string;
   };
+  views?: number;
 }
