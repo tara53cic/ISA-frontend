@@ -1,46 +1,55 @@
 <h2 mat-dialog-title>Create video</h2>
 
 <mat-dialog-content [formGroup]="form" class="upload-dialog">
-  <mat-form-field appearance="outline" class="full">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="full">
-    <mat-label>Description</mat-label>
-    <textarea matInput formControlName="description" rows="3"></textarea>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="full">
-    <mat-label>Tags (comma separated)</mat-label>
-    <input matInput formControlName="tags" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="full">
-    <mat-label>Location</mat-label>
-    <input matInput formControlName="location" />
-  </mat-form-field>
-
-  <div class="schedule-row">
-    <mat-slide-toggle formControlName="scheduled">Schedule upload</mat-slide-toggle>
-    <mat-form-field appearance="outline" class="scheduled-input" *ngIf="form.value.scheduled">
-      <mat-label>Scheduled date & time</mat-label>
-      <input matInput type="datetime-local" formControlName="scheduledAt" />
+  <div class="main-col">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
     </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="4"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Tags (comma separated)</mat-label>
+      <input matInput formControlName="tags" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" />
+    </mat-form-field>
+
+    <div class="schedule-row">
+      <mat-slide-toggle formControlName="scheduled">Schedule upload</mat-slide-toggle>
+      <mat-form-field appearance="outline" class="scheduled-input" *ngIf="form.value.scheduled">
+        <mat-label>Scheduled date & time</mat-label>
+        <input matInput type="datetime-local" formControlName="scheduledAt" />
+      </mat-form-field>
+    </div>
+
+    <div class="file-row-main">
+      <label class="file-label">Video file</label>
+      <label class="file-input-btn">
+        <input type="file" accept="video/*" (change)="onVideoChange($event)" />
+        Select video file
+      </label>
+    </div>
   </div>
 
-  <div class="file-row">
-    <div class="thumb-col">
+  <div class="side-col">
+    <div class="thumb-section">
       <label class="file-label">Thumbnail</label>
-      <input type="file" accept="image/*" (change)="onThumbnailChange($event)" />
+      <label class="file-input-btn thumb-btn">
+        <input type="file" accept="image/*" (change)="onThumbnailChange($event)" />
+        Choose thumbnail
+      </label>
       <div class="thumb-preview" *ngIf="thumbnailPreview">
         <img [src]="thumbnailPreview" alt="thumb" />
       </div>
-    </div>
-
-    <div class="video-col">
-      <label class="file-label">Video file</label>
-      <input type="file" accept="video/*" (change)="onVideoChange($event)" />
+      <div class="upload-hint">Recommended: 1280x720, JPG/PNG</div>
     </div>
   </div>
 

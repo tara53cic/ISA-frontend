@@ -27,23 +27,26 @@
 
 .scheduled-placeholder {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   color: #fff;
-  background: #111;
+  background: linear-gradient(180deg, #0f1724, #0b1220);
   border-radius: 6px;
   width: 100%;
   aspect-ratio: 16 / 9;
 }
 
-.scheduled-msg { font-size: 1.1rem; margin-bottom: 8px; }
-.countdown { font-weight: 700; font-size: 1.25rem; }
+.scheduled-inner { text-align: center; }
+.scheduled-heading { color: #5d75c4; font-weight: 800; font-size: 1rem; margin-bottom: 6px; }
+.scheduled-msg { color: #dfe7ff; font-size: 0.95rem; margin-bottom: 6px; }
+.scheduled-time { color: #cfd9ff; font-weight: 700; margin-bottom: 8px; }
+.countdown { font-weight: 900; font-size: 1.6rem; color: #5d75c4; }
 
 .live-overlay {
   position: absolute;
   z-index: 10;
-  margin: 12px;
+  top: 12px;
+  right: 12px;
   background: rgba(211,47,47,0.95);
   color: #fff;
   padding: 6px 10px;
@@ -63,9 +66,14 @@
   margin-bottom: 15px;
 }
 
+.info-row { display:flex; gap:12px; align-items:center; color:#666; margin-bottom:10px; }
+
+.small-divider { border: none; height: 1px; background: #e6e9f8; margin: 6px 0 12px; }
+
 .meta .description {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: #444;
+  line-height: 1.4;
 }
 
 .meta .tags {

@@ -1,6 +1,8 @@
 <mat-toolbar class="app-navbar" color="primary">
     <div class="left" fxLayout="row" fxLayoutAlign="start center">
-        <img src="assets/logo2.png" alt="Logo" class="logo" />
+        <a routerLink="/" class="logo-link">
+          <img src="assets/logo2.png" alt="Logo" class="logo" />
+        </a>
     </div>
 
     <div class="search">
@@ -21,11 +23,18 @@
             Create video!
         </button>
 
-        <button *ngIf="hasSignedIn()" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
-            <mat-icon class="avatar-icon">account_circle</mat-icon>
-        </button>
+                <button *ngIf="hasSignedIn()" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu" class="user-button">
+                    <ng-container *ngIf="userService.currentUser && (userService.currentUser.avatar_url || userService.currentUser.avatar); else initials">
+                        <img class="avatar" [src]="userService.currentUser.avatar_url || userService.currentUser.avatar" alt="user avatar" />
+                    </ng-container>
+                    <ng-template #initials>
+                        <div class="avatar-icon">{{ userInitials() }}</div>
+                    </ng-template>
+                </button>
 
         <mat-menu #userMenu="matMenu">
+            <button mat-menu-item disabled>Hello, {{ userName() }}</button>
+            <mat-divider></mat-divider>
             <button mat-menu-item (click)="logout()">Log Out</button>
         </mat-menu>
     </div>

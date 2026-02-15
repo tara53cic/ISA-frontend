@@ -40,6 +40,7 @@
 	background: #eee;
 	overflow: hidden;
 	border-radius: 4px;
+	position: relative;
 }
 
 .thumb img {
@@ -88,3 +89,23 @@
 	border-radius: 12px;
 	font-size: 0.8rem;
 }
+
+.thumb-badges {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	left: auto;
+	display: flex;
+	gap: 8px;
+}
+
+.video-meta-info {
+	margin-top: 6px;
+	color: #666;
+	font-size: 0.85rem;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.video-meta-info .meta-views { font-weight: 600; }

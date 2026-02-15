@@ -8,14 +8,17 @@
           <a [routerLink]="['/video', video.id]" class="video-card video-link" (click)="onVideoClick(video)">
             <div class="thumb">
               <img [src]="video.thumbnail_url" [alt]="video.title" />
+              <div class="thumb-badges">
+                <span *ngIf="isLive(video)" class="live-badge">LIVE</span>
+                <span *ngIf="isFuture(video.scheduled_at)" class="scheduled-badge">Scheduled at {{ video.scheduled_at | date:'short' }}</span>
+              </div>
             </div>
             <div class="video-title">{{ video.title }}</div>
+            <div class="video-meta-info">
+              <div class="meta-views">{{ video?.views || 0 }} views</div>
+              <div class="meta-date">{{ video?.created_at | date:'short' }}</div>
+            </div>
           </a>
-
-          <div class="badge-row">
-            <span *ngIf="isLive(video)" class="live-badge">LIVE</span>
-            <span *ngIf="isFuture(video.scheduled_at)" class="scheduled-badge">Scheduled at {{ video.scheduled_at | date:'short' }}</span>
-          </div>
         </div>
       </ng-container>
     </div>
@@ -30,14 +33,17 @@
           <a [routerLink]="['/video', video.id]" class="video-card video-link" (click)="onVideoClick(video)">
             <div class="thumb">
               <img [src]="video.thumbnail_url" [alt]="video.title" />
+              <div class="thumb-badges">
+                <span *ngIf="isLive(video)" class="live-badge">LIVE</span>
+                <span *ngIf="isFuture(video.scheduled_at)" class="scheduled-badge">Scheduled at {{ video.scheduled_at | date:'short' }}</span>
+              </div>
             </div>
             <div class="video-title">{{ video.title }}</div>
+            <div class="video-meta-info">
+              <div class="meta-views">{{ video?.views || 0 }} views</div>
+              <div class="meta-date">{{ video?.created_at | date:'short' }}</div>
+            </div>
           </a>
-
-          <div class="badge-row">
-            <span *ngIf="isLive(video)" class="live-badge">LIVE</span>
-            <span *ngIf="isFuture(video.scheduled_at)" class="scheduled-badge">Scheduled at {{ video.scheduled_at | date:'short' }}</span>
-          </div>
         </div>
       </ng-container>
     </div>

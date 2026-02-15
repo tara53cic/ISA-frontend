@@ -18,6 +18,8 @@
   margin-right: 12px;
 }
 
+.logo-link { display: inline-block; height: 60px; }
+
 .search {
   flex: 1 1 0;
   display: flex;
@@ -98,10 +100,23 @@
   align-items: center;
 }
 
+:host .right {
+  gap: 8px;
+}
+
 :host .right button[mat-raised-button] {
+  margin-right: 0;
+  transform: translateY(-4px);
+}
+
+:host .right button[mat-icon-button] {
   margin-right: 8px;
   transform: translateY(-4px);
 }
+
+.user-button { padding: 0%; }
+.user-button .avatar { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; display: block; }
+.avatar-icon { width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center; background: #5d75c4; color: white; border-radius: 50%; font-weight: 700; }
 
 
 :host ::ng-deep .search-field .mat-form-field {

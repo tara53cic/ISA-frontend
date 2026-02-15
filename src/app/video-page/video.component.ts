@@ -32,6 +32,10 @@ export class VideoComponent implements OnInit, OnDestroy {
         this.video = v;
         if (this.isFuture(v?.scheduled_at)) {
           this.startCountdown(v!.scheduled_at!);
+        } else {
+          this.videoService.recordView(id).subscribe(() => {
+            if (this.video) { this.video.views = (this.video.views || 0) + 1; }
+          }, () => {});
         }
       });
 

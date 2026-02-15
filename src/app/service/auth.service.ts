@@ -17,9 +17,14 @@ export class AuthService {
     private config: ConfigService,
     private router: Router
   ) {
+
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      this.access_token = token;
+    }
   }
 
-  private access_token = null;
+  private access_token: string | null = null;
 
   login(user:any) {
     const loginHeaders = new HttpHeaders({

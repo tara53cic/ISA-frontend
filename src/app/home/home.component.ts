@@ -60,10 +60,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   onVideoClick(video: Video | any) {
     const id = video?.id;
     if (!id) return;
-    this.videoService.recordView(id).subscribe({
-      next: () => {},
-      error: () => {}
-    });
   }
 
 }

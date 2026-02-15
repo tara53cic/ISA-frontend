@@ -4,8 +4,12 @@
       <div class="player-wrap">
         <ng-container *ngIf="isFuture(video.scheduled_at); else playBlock">
           <div class="player-element scheduled-placeholder">
-            <div class="scheduled-msg">This video is a scheduled video, it will start in...</div>
-            <div class="countdown">{{ countdownDisplay }}</div>
+            <div class="scheduled-inner">
+              <div class="scheduled-heading">Scheduled</div>
+              <div class="scheduled-msg">This video will start at</div>
+              <div class="scheduled-time">{{ video?.scheduled_at | date:'medium' }}</div>
+              <div class="countdown">{{ countdownDisplay }}</div>
+            </div>
           </div>
         </ng-container>
         <ng-template #playBlock>
@@ -17,7 +21,14 @@
       </div>
       <div class="meta">
         <div class="title">{{ video?.title }}</div>
-        <div class="views">{{ video?.views || 0 }} views</div>
+
+        <div class="info-row">
+          <div class="views">{{ video?.views || 0 }} views</div>
+          <div class="created">{{ video?.created_at | date:'medium' }}</div>
+        </div>
+
+        <hr class="small-divider" />
+
         <div class="description">{{ video?.description }}</div>
 
         <div class="meta-row">
@@ -28,8 +39,6 @@
             <mat-icon class="reaction-icon rotated" [class.active]="disliked" (click)="toggleDislike()">thumb_up</mat-icon>
           </div>
         </div>
-
-        <div class="created">{{ video?.created_at | date:'medium' }}</div>
 
         <hr class="section-divider" />
 
